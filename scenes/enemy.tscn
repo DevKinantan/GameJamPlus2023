@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvu3nhv566cj4"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_dilog"]
+[ext_resource type="Texture2D" uid="uid://ddr4o42shp3jp" path="res://assets/sprite/Brute.png" id="2_enkvh"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.gd" id="3_rfag7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tblmr"]
+radius = 5.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nf3j"]
+height = 36.0
+
+[node name="Enemy" type="StaticBody2D"]
+script = ExtResource("1_dilog")
+
+[node name="WalkSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_enkvh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tblmr")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_rfag7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_4nf3j")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

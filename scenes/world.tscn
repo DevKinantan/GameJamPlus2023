@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpcxxxnwqel5f"]
+
+[ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="1_rjd2k"]
+[ext_resource type="PackedScene" uid="uid://cvu3nhv566cj4" path="res://scenes/enemy.tscn" id="3_0g454"]
+[ext_resource type="Texture2D" uid="uid://tlvp8k8c4tl2" path="res://assets/sprite/chest_small.png" id="4_hls8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4melk"]
+size = Vector2(32, 10)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_rjd2k")]
+position = Vector2(93, 89)
+
+[node name="Chest" type="StaticBody2D" parent="."]
+position = Vector2(158, 88)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Chest"]
+texture = ExtResource("4_hls8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_4melk")
+
+[node name="Enemy" parent="." instance=ExtResource("3_0g454")]
+position = Vector2(155, 30)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_0g454")]
+position = Vector2(253, 106)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_0g454")]
+position = Vector2(51, 139)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7d507fysb03"]
+
+[ext_resource type="Texture2D" uid="uid://b4uvj4rj80v5q" path="res://assets/sprite/brute_killed.png" id="1_7j2vq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tda1g"]
+radius = 7.0
+
+[node name="DeathEnemy" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7j2vq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tda1g")
