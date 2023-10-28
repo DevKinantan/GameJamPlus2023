@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c65mbnwg1o6gh"]
+
+[ext_resource type="PackedScene" uid="uid://dgm435ykyx77q" path="res://scenes/Ingredients/Core/ingredient.tscn" id="1_1rxiq"]
+[ext_resource type="Texture2D" uid="uid://igvu1rvc7oc3" path="res://assets/sprite/Mushroom/crown mushroom.png" id="2_rvxbp"]
+
+[node name="Crown" instance=ExtResource("1_1rxiq")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_rvxbp")

@@ -1,0 +1,171 @@
+[gd_scene load_steps=18 format=3 uid="uid://x806kcckjqsf"]
+
+[ext_resource type="PackedScene" uid="uid://c4dpkjyxgds0m" path="res://scenes/Ingredients/Core/user_pointer.tscn" id="1_lo1m6"]
+[ext_resource type="Script" path="res://scripts/cooking.gd" id="1_qv80s"]
+[ext_resource type="Texture2D" uid="uid://ddomgsqluuc0y" path="res://assets/ui/Matrial Select UI.png" id="3_tipp5"]
+[ext_resource type="PackedScene" uid="uid://c65mbnwg1o6gh" path="res://scenes/Ingredients/diamond_mushroom.tscn" id="4_1ehsf"]
+[ext_resource type="PackedScene" uid="uid://b6e5wjswfx02x" path="res://scenes/Ingredients/doom_mushroom.tscn" id="5_tfuno"]
+[ext_resource type="PackedScene" uid="uid://bsgg1xjgo42px" path="res://scenes/Ingredients/rotten_mushroom.tscn" id="6_asc33"]
+[ext_resource type="PackedScene" uid="uid://k20xasi3xkym" path="res://scenes/Ingredients/normal_mushroom.tscn" id="6_gk838"]
+[ext_resource type="Texture2D" uid="uid://vemmi18grmcn" path="res://assets/ui/Cook button.png" id="7_vrwos"]
+[ext_resource type="Texture2D" uid="uid://bscx6oadugn4c" path="res://assets/ui/Cook button 2.png" id="8_k7lwf"]
+[ext_resource type="Texture2D" uid="uid://chx0ns64fsrql" path="res://assets/sprite/AlatMasak/Kuali.png" id="8_yy0nv"]
+[ext_resource type="Texture2D" uid="uid://o823auyraldn" path="res://assets/ui/ArrowUp.png" id="9_csxns"]
+[ext_resource type="Texture2D" uid="uid://ccm4jpf6c4ct5" path="res://assets/ui/ArrowUp Click.png" id="10_idfd0"]
+[ext_resource type="Texture2D" uid="uid://cxnbhvjfanumd" path="res://assets/ui/ArrowDown.png" id="11_qv224"]
+[ext_resource type="Texture2D" uid="uid://dq1hllscqiork" path="res://assets/ui/ArrowDown Click.png" id="12_xc2u8"]
+[ext_resource type="Texture2D" uid="uid://bbc81w1d0fh1" path="res://assets/ui/Cook button 1 (warna gelap 2).png" id="15_rqiv8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nimd2"]
+font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmm82"]
+size = Vector2(28, 28)
+
+[node name="Cooking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qv80s")
+
+[node name="UserPointer" parent="." instance=ExtResource("1_lo1m6")]
+
+[node name="StartPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -55.0
+offset_right = 100.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartBtn" type="Button" parent="StartPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = -30.0
+offset_right = -69.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartLabel" type="Label" parent="StartPanel/StartBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+label_settings = SubResource("LabelSettings_nimd2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CookPanel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 197.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_tipp5")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="CookBtn" type="TextureButton" parent="CookPanel"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 34.0
+offset_right = 188.0
+offset_bottom = 55.0
+texture_normal = ExtResource("7_vrwos")
+texture_pressed = ExtResource("8_k7lwf")
+texture_hover = ExtResource("15_rqiv8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Ingredients" type="Node2D" parent="CookPanel"]
+
+[node name="Crown" parent="CookPanel/Ingredients" instance=ExtResource("4_1ehsf")]
+position = Vector2(32, 53)
+
+[node name="Doom" parent="CookPanel/Ingredients" instance=ExtResource("5_tfuno")]
+position = Vector2(14, 53)
+
+[node name="Rotten" parent="CookPanel/Ingredients" instance=ExtResource("6_asc33")]
+position = Vector2(14, 35)
+
+[node name="Normal" parent="CookPanel/Ingredients" instance=ExtResource("6_gk838")]
+position = Vector2(32, 35)
+
+[node name="Mixer1" type="Node2D" parent="CookPanel" groups=["Mixer"]]
+position = Vector2(62, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="CookPanel/Mixer1"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Area2D" type="Area2D" parent="CookPanel/Mixer1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookPanel/Mixer1/Area2D"]
+shape = SubResource("RectangleShape2D_vmm82")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Mixer2" type="Node2D" parent="CookPanel" groups=["Mixer"]]
+position = Vector2(96, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="CookPanel/Mixer2"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Area2D" type="Area2D" parent="CookPanel/Mixer2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookPanel/Mixer2/Area2D"]
+shape = SubResource("RectangleShape2D_vmm82")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Mixer3" type="Node2D" parent="CookPanel"]
+position = Vector2(130, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="CookPanel/Mixer3"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_yy0nv")
+
+[node name="UpBtn" type="TextureButton" parent="CookPanel/Mixer3"]
+offset_left = -8.0
+offset_top = -29.0
+offset_right = 8.0
+offset_bottom = -13.0
+texture_normal = ExtResource("9_csxns")
+texture_hover = ExtResource("10_idfd0")
+
+[node name="DownBtn" type="TextureButton" parent="CookPanel/Mixer3"]
+offset_left = -8.0
+offset_top = 14.0
+offset_right = 8.0
+offset_bottom = 30.0
+texture_normal = ExtResource("11_qv224")
+texture_hover = ExtResource("12_xc2u8")
+
+[node name="Food" type="Node2D" parent="CookPanel"]
+position = Vector2(175, 44)
+
+[node name="Sprite2D" type="Sprite2D" parent="CookPanel/Food"]
+scale = Vector2(0.7, 0.7)
+
+[connection signal="set_mixer" from="UserPointer" to="." method="_on_user_pointer_set_mixer"]
+[connection signal="pressed" from="StartPanel/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="CookPanel/CookBtn" to="." method="_on_cook_btn_pressed"]
+[connection signal="pressed" from="CookPanel/Mixer3/UpBtn" to="." method="_on_up_btn_pressed"]
+[connection signal="pressed" from="CookPanel/Mixer3/DownBtn" to="." method="_on_down_btn_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk6txek6l8dkb"]
+
+[ext_resource type="Texture2D" uid="uid://dl0lwq17w8ddi" path="res://assets/sprite/Resto.png" id="2_3hrrm"]
+[ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="2_8b0ld"]
+
+[node name="Restaurant" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_8b0ld")]
+position = Vector2(229, 128)
+
+[node name="Resto" type="Sprite2D" parent="."]
+position = Vector2(213, 120)
+texture = ExtResource("2_3hrrm")
