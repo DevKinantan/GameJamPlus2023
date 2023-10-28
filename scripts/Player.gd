@@ -10,13 +10,15 @@ const SPEED = 100.0
 
 var is_facing_left = false
 var state = MOVE
+var enemies_on_area = false
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var idleSprite = $IdleSprite
 @onready var walkSprite = $WalkSprite
 @onready var attackSprite = $AttackSprite
 @onready var hitboxPivot = $HitboxPivot
-@onready var hitbox = $HitboxPivot/Hitbox
+@onready var hitbox = $HitboxPivot/PlayerHitbox
+@onready var detectionArea = $DetectionArea
 
 
 func _physics_process(delta):
@@ -25,9 +27,20 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			play_attack()
+	
+	flip_sprite(velocity)
 
 
 func move_state(delta):
+	var overlapping_area = detectionArea.get_overlapping_areas()
+	if overlapping_area:
+		for area in overlapping_area:
+			if area.name == "EnemyHurtbox":
+				enemies_on_area = true
+				break
+			else:
+				enemies_on_area = false
+	
 	var direction = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	direction = direction.normalized()
 	
@@ -37,9 +50,7 @@ func move_state(delta):
 		play_walk()
 		direction *= SPEED
 		velocity = Vector2(direction.x, direction.y)
-		if direction.x:
-			if (direction.x < 0 and not is_facing_left) or (direction.x > 0 and is_facing_left):
-				flip_sprite()
+
 	else:
 		play_idle()
 		velocity *= delta
@@ -67,12 +78,15 @@ func play_attack():
 	walkSprite.visible = false
 	idleSprite.visible = false
 	attackSprite.visible = true
-	hitbox.monitorable = true
 	animationPlayer.play("AttackRight")
 
 
-func flip_sprite():
-	is_facing_left = not is_facing_left
+func flip_sprite(direction):
+	if enemies_on_area:
+		is_facing_left = get_global_mouse_position().x < global_position.x
+	elif direction.x and not enemies_on_area:
+		is_facing_left = direction.x < 0
+	
 	idleSprite.flip_h = is_facing_left
 	walkSprite.flip_h = is_facing_left
 	attackSprite.flip_h = is_facing_left
@@ -85,4 +99,3 @@ func flip_sprite():
 
 func attack_animation_finish():
 	state = MOVE
-	hitbox.monitorable = false

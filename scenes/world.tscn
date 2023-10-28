@@ -1,17 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpcxxxnwqel5f"]
+[gd_scene load_steps=12 format=3 uid="uid://dpcxxxnwqel5f"]
 
 [ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="1_rjd2k"]
-[ext_resource type="PackedScene" uid="uid://cvu3nhv566cj4" path="res://scenes/enemy.tscn" id="3_0g454"]
+[ext_resource type="PackedScene" uid="uid://coesor0lffw60" path="res://scenes/ghoul.tscn" id="3_yfyii"]
 [ext_resource type="Texture2D" uid="uid://tlvp8k8c4tl2" path="res://assets/sprite/chest_small.png" id="4_hls8y"]
+[ext_resource type="Texture2D" uid="uid://ddr4o42shp3jp" path="res://assets/sprite/Brute.png" id="4_wp5jd"]
+[ext_resource type="Texture2D" uid="uid://dufwj16m3a4ji" path="res://assets/animation/brute_walking.png" id="5_san82"]
+[ext_resource type="Texture2D" uid="uid://dw8y7y2yei04a" path="res://assets/animation/brute_idle.png" id="6_dybed"]
+[ext_resource type="Texture2D" uid="uid://b34gb0nbpehp0" path="res://assets/animation/brute_dead.png" id="7_yerhg"]
+[ext_resource type="Texture2D" uid="uid://b3c04ayyp4hds" path="res://assets/animation/ghoul_idle.png" id="8_0273k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4melk"]
 size = Vector2(32, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvdwh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjurw"]
+radius = 11.0
+height = 34.0
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_rjd2k")]
-position = Vector2(93, 89)
+position = Vector2(253, 243)
 
 [node name="Chest" type="StaticBody2D" parent="."]
 position = Vector2(158, 88)
@@ -24,11 +35,38 @@ texture = ExtResource("4_hls8y")
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_4melk")
 
-[node name="Enemy" parent="." instance=ExtResource("3_0g454")]
-position = Vector2(155, 30)
+[node name="Ghoul3" parent="." instance=ExtResource("3_yfyii")]
+position = Vector2(269, 242)
+hp = 99
 
-[node name="Enemy2" parent="." instance=ExtResource("3_0g454")]
-position = Vector2(253, 106)
+[node name="Brute" type="Sprite2D" parent="."]
+position = Vector2(191, 234)
+texture = ExtResource("4_wp5jd")
 
-[node name="Enemy3" parent="." instance=ExtResource("3_0g454")]
-position = Vector2(51, 139)
+[node name="Area2D" type="Area2D" parent="Brute"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brute/Area2D"]
+position = Vector2(-15, 4)
+shape = SubResource("CapsuleShape2D_xvdwh")
+
+[node name="BruteWalking" type="Sprite2D" parent="."]
+position = Vector2(162, 275)
+texture = ExtResource("5_san82")
+
+[node name="BruteIdle" type="Sprite2D" parent="."]
+position = Vector2(174, 315)
+texture = ExtResource("6_dybed")
+
+[node name="BruteDead" type="Sprite2D" parent="."]
+position = Vector2(114, 351)
+texture = ExtResource("7_yerhg")
+
+[node name="GhoulIdle" type="Sprite2D" parent="."]
+position = Vector2(399, 221)
+texture = ExtResource("8_0273k")
+hframes = 5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GhoulIdle"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_sjurw")

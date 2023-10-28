@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://4g6i0weru5e1"]
+
+[ext_resource type="Texture2D" uid="uid://81rugf8r3cnp" path="res://assets/animation/ghoul_dead.png" id="1_0xxq3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_43xo7"]
+radius = 5.0
+height = 22.0
+
+[node name="DeadGhoul" type="StaticBody2D"]
+z_index = 1
+
+[node name="DeadSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_0xxq3")
+hframes = 24
+frame = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_43xo7")

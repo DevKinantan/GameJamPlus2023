@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnovrabmepdjs"]
+[gd_scene load_steps=14 format=3 uid="uid://cnovrabmepdjs"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_asgfk"]
 [ext_resource type="Texture2D" uid="uid://cpwvgiym7h30e" path="res://assets/animation/player_idle.png" id="2_c38fx"]
@@ -42,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/Hitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("HitboxPivot/PlayerHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -110,7 +110,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/Hitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxPivot/PlayerHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -149,7 +149,11 @@ _data = {
 radius = 8.0
 height = 36.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb7im"]
+radius = 100.0
+
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_asgfk")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -184,9 +188,16 @@ libraries = {
 
 [node name="HitboxPivot" type="Marker2D" parent="."]
 
-[node name="Hitbox" type="Area2D" parent="HitboxPivot"]
+[node name="PlayerHitbox" type="Area2D" parent="HitboxPivot"]
 position = Vector2(15, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPivot/PlayerHitbox"]
 shape = SubResource("CapsuleShape2D_8oyd6")
 disabled = true
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_jb7im")
+
+[node name="Camera2D" type="Camera2D" parent="."]
