@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://x806kcckjqsf"]
+[gd_scene load_steps=18 format=3 uid="uid://cm2704sgx5mxo"]
 
 [ext_resource type="PackedScene" uid="uid://c4dpkjyxgds0m" path="res://scenes/Ingredients/Core/user_pointer.tscn" id="1_lo1m6"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="1_qv80s"]
@@ -16,34 +16,28 @@
 [ext_resource type="Texture2D" uid="uid://dq1hllscqiork" path="res://assets/ui/ArrowDown Click.png" id="12_xc2u8"]
 [ext_resource type="Texture2D" uid="uid://bbc81w1d0fh1" path="res://assets/ui/Cook button 1 (warna gelap 2).png" id="15_rqiv8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_nimd2"]
+[sub_resource type="LabelSettings" id="LabelSettings_va7km"]
 font_size = 10
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmm82"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b46x"]
 size = Vector2(28, 28)
 
-[node name="Cooking" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Cooking" type="Node2D"]
 script = ExtResource("1_qv80s")
 
 [node name="UserPointer" parent="." instance=ExtResource("1_lo1m6")]
 
 [node name="StartPanel" type="Panel" parent="."]
-layout_mode = 1
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -55.0
-offset_right = 100.0
-offset_bottom = 55.0
+offset_left = 113.0
+offset_top = 65.0
+offset_right = 313.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -68,17 +62,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "START"
-label_settings = SubResource("LabelSettings_nimd2")
+label_settings = SubResource("LabelSettings_va7km")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CookPanel" type="TextureRect" parent="."]
-layout_mode = 1
+z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -76.0
+offset_top = 168.0
 offset_right = 197.0
+offset_bottom = 244.0
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("3_tipp5")
@@ -120,7 +115,7 @@ scale = Vector2(1.5, 1.5)
 [node name="Area2D" type="Area2D" parent="CookPanel/Mixer1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CookPanel/Mixer1/Area2D"]
-shape = SubResource("RectangleShape2D_vmm82")
+shape = SubResource("RectangleShape2D_5b46x")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Mixer2" type="Node2D" parent="CookPanel" groups=["Mixer"]]
@@ -132,7 +127,7 @@ scale = Vector2(1.5, 1.5)
 [node name="Area2D" type="Area2D" parent="CookPanel/Mixer2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CookPanel/Mixer2/Area2D"]
-shape = SubResource("RectangleShape2D_vmm82")
+shape = SubResource("RectangleShape2D_5b46x")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Mixer3" type="Node2D" parent="CookPanel"]

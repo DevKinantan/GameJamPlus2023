@@ -1,4 +1,6 @@
-extends Control
+extends Node2D
+
+signal game_started
 
 var mixer1 = null;
 var mixer2 = null;
@@ -43,6 +45,8 @@ var mixer3_sprites = {
 }
 
 var mixer3_cycles = ["Kuali", "Grill", "Oven", "Blender"]
+
+var customer_scene = preload("res://scenes/Customer/customer.tscn")
 
 @onready var mixer1_sprite = get_node("CookPanel/Mixer1/Sprite2D")
 @onready var mixer2_sprite = get_node("CookPanel/Mixer2/Sprite2D")
@@ -109,6 +113,12 @@ func cook_food():
 	cook_button.visible = false
 
 
+func spawn_customer():
+	var customer = customer_scene.instantiate()
+	get_tree().get_root().add_child(customer)
+	return customer
+
+
 func cycle_mixer3(increment: int):
 	mixer3Index += increment
 	
@@ -143,3 +153,4 @@ func _on_start_btn_pressed():
 	$CookPanel.visible = true
 	$StartPanel.visible = false
 	$CookPanel.position.y = 164
+	emit_signal("game_started")

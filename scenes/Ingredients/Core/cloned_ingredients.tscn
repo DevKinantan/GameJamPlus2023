@@ -7,6 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="ClonedIngredients" type="Node2D"]
+z_index = 2
 script = ExtResource("1_51x78")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

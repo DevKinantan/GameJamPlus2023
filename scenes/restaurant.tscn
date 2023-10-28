@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk6txek6l8dkb"]
+[gd_scene load_steps=5 format=3 uid="uid://bk6txek6l8dkb"]
 
+[ext_resource type="Script" path="res://scripts/restaurant.gd" id="1_0rk40"]
 [ext_resource type="Texture2D" uid="uid://dl0lwq17w8ddi" path="res://assets/sprite/Resto.png" id="2_3hrrm"]
 [ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="2_8b0ld"]
+[ext_resource type="PackedScene" uid="uid://cm2704sgx5mxo" path="res://scenes/cooking.tscn" id="3_o33ep"]
 
 [node name="Restaurant" type="Node2D"]
+script = ExtResource("1_0rk40")
 
 [node name="Player" parent="." instance=ExtResource("2_8b0ld")]
 position = Vector2(229, 128)
@@ -11,3 +14,30 @@ position = Vector2(229, 128)
 [node name="Resto" type="Sprite2D" parent="."]
 position = Vector2(213, 120)
 texture = ExtResource("2_3hrrm")
+
+[node name="Cooking" parent="." instance=ExtResource("3_o33ep")]
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(391, 210)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(364, 176)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(334, 199)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(313, 171)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(277, 168)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(231, 200)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(283, 224)
+
+[connection signal="game_started" from="Cooking" to="." method="_on_cooking_game_started"]
