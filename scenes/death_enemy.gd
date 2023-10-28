@@ -1,11 +1,15 @@
 extends StaticBody2D
 
 signal player_inside(status)
-var canPlant : bool
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+var canPlant : bool
+@onready var player = get_parent().get_node("Player")
+@onready var _harvest = preload("res://scenes/harvesting.tscn")
+@onready var selected_seeds : String
+
+func _ready():
+	player.connect("_planting", plant_seeds)
+	player.connect("seeds_planting", planted_seeds)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,4 +23,16 @@ func _on_area_2d_body_exited(_body):
 	canPlant = false
 	player_inside.emit(canPlant)
 	
+func planted_seeds(value):
+	selected_seeds = value
+	
+func plant_seeds():
+	call("call_mushroom")
+	queue_free()
 
+func call_mushroom():
+	var harvest_mushroom = _harvest.instantiate()
+	get_parent().add_child(harvest_mushroom)
+	harvest_mushroom.global_position = global_position
+	harvest_mushroom.plant_result = selected_seeds
+	harvest_mushroom.connect("harvest_time", player.player_can_harvest)

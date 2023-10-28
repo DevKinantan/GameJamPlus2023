@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chp4252dnet0v"
+path="res://.godot/imported/Walking Grass.wav-25f77a84377b87f11d002cc50c3b3d7f.sample"
+
+[deps]
+
+source_file="res://assets/Jamur/SFX/Walking Grass.wav"
+dest_files=["res://.godot/imported/Walking Grass.wav-25f77a84377b87f11d002cc50c3b3d7f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

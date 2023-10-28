@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuuylp0kosjyo"]
+[gd_scene load_steps=7 format=3 uid="uid://cuuylp0kosjyo"]
 
 [ext_resource type="Script" path="res://scenes/seeds_inven.gd" id="1_7qnhb"]
 [ext_resource type="Script" path="res://scenes/Slots.gd" id="2_68dap"]
+[ext_resource type="Texture2D" uid="uid://h10th81pixvg" path="res://assets/Jamur/Seed/BenihRegula.png" id="3_xi7nl"]
+[ext_resource type="Texture2D" uid="uid://cymkyeccjpgxw" path="res://assets/Jamur/Seed/Doom mushroom Seed.png" id="4_8m8tm"]
+[ext_resource type="Texture2D" uid="uid://bu7a0v1bllh54" path="res://assets/Jamur/Seed/BenihDiamond.png" id="5_gwck1"]
+[ext_resource type="Texture2D" uid="uid://6j37p04ovw5l" path="res://assets/Jamur/Seed/Rotten Spice seed.png" id="6_i0pjd"]
 
 [node name="SeedsInven" type="CanvasLayer"]
 script = ExtResource("1_7qnhb")
@@ -17,77 +21,43 @@ offset_bottom = -10.0
 grow_vertical = 0
 
 [node name="Slot1" type="Panel" parent="Seeds"]
-visible = false
 layout_mode = 2
 script = ExtResource("2_68dap")
 
-[node name="ColorRect" type="ColorRect" parent="Seeds/Slot1"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.533333, 0.054902, 0.654902, 1)
-
-[node name="Label" type="Label" parent="Seeds/Slot1/ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Regular Shroom" type="Sprite2D" parent="Seeds/Slot1"]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_xi7nl")
 
 [node name="Slot2" type="Panel" parent="Seeds"]
 visible = false
 layout_mode = 2
 script = ExtResource("2_68dap")
 
-[node name="ColorRect" type="ColorRect" parent="Seeds/Slot2"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.423529, 0.341176, 0.0784314, 1)
+[node name="Doom Shroom" type="Sprite2D" parent="Seeds/Slot2"]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_8m8tm")
 
 [node name="Slot3" type="Panel" parent="Seeds"]
 visible = false
 layout_mode = 2
 script = ExtResource("2_68dap")
 
-[node name="ColorRect" type="ColorRect" parent="Seeds/Slot3"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.403922, 0.372549, 1)
+[node name="Diamond Umbrella" type="Sprite2D" parent="Seeds/Slot3"]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_gwck1")
 
 [node name="Slot4" type="Panel" parent="Seeds"]
 visible = false
 layout_mode = 2
 script = ExtResource("2_68dap")
 
-[node name="ColorRect" type="ColorRect" parent="Seeds/Slot4"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.160784, 0.294118, 0.760784, 1)
+[node name="Rotten Spice" type="Sprite2D" parent="Seeds/Slot4"]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_i0pjd")
 
 [node name="scrollCooldown" type="Timer" parent="."]
 one_shot = true

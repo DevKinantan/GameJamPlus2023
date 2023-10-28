@@ -28,5 +28,9 @@ collision_mask = 2
 position = Vector2(-5.5, 7.5)
 shape = SubResource("RectangleShape2D_woom5")
 
+[node name="seedTimer" type="Timer" parent="."]
+
+[node name="startSeed" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

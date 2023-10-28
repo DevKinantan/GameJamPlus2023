@@ -40,16 +40,32 @@ texture = ExtResource("5_s3y2l")
 hframes = 4
 
 [node name="TanamPrompt" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -29)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("6_bcjtn")
 
-[node name="Label" type="Label" parent="TanamPrompt"]
+[node name="Tanam" type="Label" parent="TanamPrompt"]
+visible = false
 offset_left = -60.0
 offset_top = 40.0
 offset_right = 71.0
 offset_bottom = 66.0
 text = "Untuk menanam"
+
+[node name="HarvestPrompt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -29)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_bcjtn")
+
+[node name="Harvest" type="Label" parent="HarvestPrompt"]
+visible = false
+offset_left = -66.6667
+offset_top = 40.0
+offset_right = 64.3333
+offset_bottom = 66.0
+text = "Untuk memanen"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -74,5 +90,10 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="harvestCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="tanamCooldown" to="." method="_on_tanam_timeout"]
 [connection signal="timeout" from="attackCooldown" to="." method="_on_attack_timeout"]
+[connection signal="timeout" from="harvestCooldown" to="." method="_on_harvest_cooldown_timeout"]
