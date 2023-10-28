@@ -4,6 +4,7 @@ extends CharacterBody2D
 enum {
 	MOVE,
 	ATTACK,
+	TANAM,
 }
 
 const SPEED = 100.0
@@ -25,6 +26,8 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			play_attack()
+		TANAM:
+			tanam_benih()
 
 
 func move_state(delta):
@@ -86,3 +89,9 @@ func flip_sprite():
 func attack_animation_finish():
 	state = MOVE
 	hitbox.monitorable = false
+
+func tanam_benih():
+	if Input.is_action_pressed("tanam"):
+		print("wahoo")
+
+
