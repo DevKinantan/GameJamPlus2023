@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6e5wjswfx02x"]
+
+[ext_resource type="PackedScene" uid="uid://dgm435ykyx77q" path="res://scenes/Ingredients/Core/ingredient.tscn" id="1_i0wvt"]
+[ext_resource type="Texture2D" uid="uid://b8dk7pc52fc6b" path="res://assets/sprite/Mushroom/Doom mushroom.png" id="2_vdckw"]
+
+[node name="Doom" instance=ExtResource("1_i0wvt")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_vdckw")
