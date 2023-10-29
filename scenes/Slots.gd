@@ -4,6 +4,7 @@ extends Panel
 @onready var active_slot = 0
 @onready var inven_length = get_parent().get_children().size()
 @onready var scrollCooldown = get_owner().get_node("scrollCooldown")
+@onready var backpack = get_owner().get_node("Backpack")
 @onready var can_scroll = true
 
 signal selected_slots(index)
@@ -13,10 +14,12 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("seedScrollUp") and can_scroll:
+		backpack.play()
 		can_scroll = false
 		selected_slots_up()
 		scrollCooldown.start()
 	elif Input.is_action_just_pressed("seedScrollDown") and can_scroll:
+		backpack.play()
 		can_scroll = false
 		selected_slots_down()
 		scrollCooldown.start()
