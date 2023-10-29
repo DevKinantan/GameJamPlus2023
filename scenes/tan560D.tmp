@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhcklvxjlk57h"]
+
+[ext_resource type="Script" path="res://scenes/tanam_test.gd" id="1_36m00"]
+[ext_resource type="PackedScene" uid="uid://cj1unscyvieqr" path="res://scenes/player_tanam.tscn" id="1_kou6i"]
+[ext_resource type="PackedScene" uid="uid://c7d507fysb03" path="res://scenes/death_enemy.tscn" id="3_vjuu6"]
+[ext_resource type="PackedScene" uid="uid://b5jo84raj7qa" path="res://scenes/enemy_tanam.tscn" id="4_s0gki"]
+
+[node name="tanam_test" type="Node2D"]
+script = ExtResource("1_36m00")
+
+[node name="Player" parent="." instance=ExtResource("1_kou6i")]
+position = Vector2(130, 91)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 1)
+zoom = Vector2(1.5, 1.5)
+
+[node name="DeathEnemy" parent="." instance=ExtResource("3_vjuu6")]
+position = Vector2(199, 127)
+
+[node name="Enemy_tanam" parent="." instance=ExtResource("4_s0gki")]
+position = Vector2(224, 49)
+
+[node name="Enemy_tanam2" parent="." instance=ExtResource("4_s0gki")]
+position = Vector2(70, 117)
+
+[node name="Enemy_tanam3" parent="." instance=ExtResource("4_s0gki")]
+position = Vector2(136, 39)

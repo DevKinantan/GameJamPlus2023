@@ -6,7 +6,8 @@ enum {
 	ATTACK,
 	KNOCKBACK,
 	DASH,
-	FREEZE
+	FREEZE,
+	TANAM,
 }
 
 const SPEED = 100.0
@@ -39,9 +40,12 @@ func _physics_process(delta):
 			knockback_state()
 		FREEZE:
 			pass
+		TANAM:
+			tanam_benih()
 	
 	check_enemies_on_area()
 	flip_sprite(velocity)
+		
 
 
 func move_state(delta):
@@ -152,3 +156,10 @@ func _on_player_hurtbox_area_entered(area):
 			play_hit_animation()
 			state = KNOCKBACK
 			heartUI.size.x -= 32
+
+	hitbox.monitorable = false
+
+func tanam_benih():
+	if Input.is_action_pressed("tanam"):
+		print("wahoo")
+

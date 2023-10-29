@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://od6rrjj3s71k"
+path="res://.godot/imported/Cooking SFX.wav-7b60f7dec7903c551cbb25495cb36dc4.sample"
+
+[deps]
+
+source_file="res://assets/Jamur/SFX/Cooking SFX.wav"
+dest_files=["res://.godot/imported/Cooking SFX.wav-7b60f7dec7903c551cbb25495cb36dc4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

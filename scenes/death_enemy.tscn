@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7d507fysb03"]
+[gd_scene load_steps=5 format=3 uid="uid://c7d507fysb03"]
 
 [ext_resource type="Texture2D" uid="uid://b4uvj4rj80v5q" path="res://assets/sprite/brute_killed.png" id="1_7j2vq"]
+[ext_resource type="Script" path="res://scenes/death_enemy.gd" id="1_i1evy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tda1g"]
 radius = 7.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woom5"]
+size = Vector2(49, 25)
+
 [node name="DeathEnemy" type="StaticBody2D"]
+script = ExtResource("1_i1evy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7j2vq")
@@ -14,3 +19,18 @@ texture = ExtResource("1_7j2vq")
 position = Vector2(-4, 13)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tda1g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.5, 7.5)
+shape = SubResource("RectangleShape2D_woom5")
+
+[node name="seedTimer" type="Timer" parent="."]
+
+[node name="startSeed" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
