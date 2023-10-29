@@ -662,6 +662,12 @@ offset_right = 196.0
 offset_bottom = -34.0
 text = "Spawn"
 
+[node name="Heart" parent="Player/CanvasLayer/HeartUI" index="1"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 160.0
+offset_bottom = 32.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8vk5w")
 volume_db = -20.0
@@ -682,3 +688,4 @@ texture = ExtResource("11_kjh87")
 [connection signal="pressed" from="Player/Camera2D/Button2" to="." method="_on_button_2_pressed"]
 
 [editable path="Player"]
+[editable path="Player/SeedsInven"]

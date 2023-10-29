@@ -18,6 +18,17 @@ var is_facing_left = false
 var state = MOVE
 var enemies_on_area = false
 
+var can_tanam = false
+var seed_type
+var is_planting = false
+var area_checker : bool
+var harvest_area : bool
+var can_harvest = false
+
+signal seeds_planting(type)
+signal _planting()
+signal _harvesting()
+
 @onready var animationPlayer = $AnimationPlayer
 @onready var idleSprite = $IdleSprite
 @onready var walkSprite = $WalkSprite
@@ -28,6 +39,16 @@ var enemies_on_area = false
 @onready var canvasAnimation = $CanvasLayer/AnimationPlayer
 
 @onready var heartUI = $CanvasLayer/HeartUI/Heart
+
+@onready var seeds_inven = preload("res://scenes/seeds_inven.gd")
+
+
+func _ready():
+	#seedType.connect("seed_type", plant_seeds)
+	var seedType = $SeedsInven
+	seedType.connect("seed_type", plant_seeds)
+	$TanamPrompt.visible = false
+	$HarvestPrompt.visible = false
 
 
 func _physics_process(delta):
@@ -46,6 +67,30 @@ func _physics_process(delta):
 	check_enemies_on_area()
 	flip_sprite(velocity)
 		
+	if can_tanam == true:
+		$TanamPrompt.visible = true
+		$TanamPrompt/Tanam.visible = true
+	else:
+		$TanamPrompt.visible = false
+		$TanamPrompt/Tanam.visible = false
+		
+	if can_harvest == true:
+		$HarvestPrompt.visible = true
+		$HarvestPrompt/Harvest.visible = true
+	else:
+		$HarvestPrompt.visible = false
+		$HarvestPrompt/Harvest.visible = false
+		
+	if Input.is_action_pressed("Interact") and can_tanam:
+		can_tanam = false
+		seeds_planting.emit(seed_type)
+		_planting.emit()
+		$tanamCooldown.start()
+		
+	if Input.is_action_pressed("Interact") and can_harvest:
+		can_harvest = false
+		_harvesting.emit()
+		$harvestCooldown.start()
 
 
 func move_state(delta):
@@ -159,7 +204,47 @@ func _on_player_hurtbox_area_entered(area):
 
 	hitbox.monitorable = false
 
+
 func tanam_benih():
 	if Input.is_action_pressed("tanam"):
 		print("wahoo")
 
+
+func player_can_plant(status): #Signal from deathbody Area2D
+	can_tanam = status
+	area_checker = can_tanam
+
+
+func plant_seeds(value): #Seeds type
+	if value == 0:
+		seed_type = "Reg"
+	elif value == 1:
+		seed_type = "Doom"
+	elif value == 2:
+		seed_type = "Dia"
+	else:
+		seed_type = "Rot"
+
+
+func player_can_harvest(status):
+	can_harvest = status
+	harvest_area = can_harvest
+
+
+func _on_harvest_cooldown_timeout():
+	if harvest_area == false:
+		can_harvest = false
+	else:
+		can_harvest = true
+
+
+func _on_tanam_cooldown_timeout():
+	if area_checker == false:
+		can_tanam = false
+	else:
+		can_tanam = true
+
+
+func _on_button_pressed():
+	get_parent().get_parent().get_node("TitleScreen").visible = true
+	get_parent().queue_free()

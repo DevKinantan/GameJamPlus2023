@@ -182,9 +182,10 @@ func play_dead_animation():
 
 func spawn_death_body():
 	var death_body_node = death_body_scene.instantiate()
-	death_body_node.global_position = global_position
+	death_body_node.position = position
 	get_parent().add_child(death_body_node)
 	death_body_node.get_node("DeadSprite").flip_h = is_facing_right
+	death_body_node.connect("player_inside", $"../../Player".player_can_plant)
 	queue_free()
 
 

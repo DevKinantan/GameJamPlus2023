@@ -76,7 +76,7 @@ font_size = 10
 script = ExtResource("1_7qnhb")
 
 [node name="Backpack" type="AnimatedSprite2D" parent="."]
-position = Vector2(29.5, 144.5)
+position = Vector2(30, 206)
 scale = Vector2(1.78125, 1.78125)
 sprite_frames = SubResource("SpriteFrames_lb2nj")
 frame = 2
@@ -111,11 +111,11 @@ scale = Vector2(0.65, 0.65)
 metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="Label" parent="Seeds/Slot1/Regular Shroom"]
-offset_left = -9.0
-offset_top = -15.0
-offset_right = 116.0
-offset_bottom = 11.0
-scale = Vector2(0.15, 0.15)
+offset_left = -11.6667
+offset_top = -15.6667
+offset_right = 116.333
+offset_bottom = 10.3333
+scale = Vector2(0.18, 0.18)
 text = "Regular Shroom"
 metadata/_edit_use_anchors_ = true
 

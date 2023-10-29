@@ -1,8 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv0c7fnbntwuy"]
+[gd_scene load_steps=4 format=3 uid="uid://cv0c7fnbntwuy"]
 
-[ext_resource type="PackedScene" uid="uid://3u3nqu17l70u" path="res://scenes/farm.tscn" id="1_sci7n"]
+[ext_resource type="Texture2D" uid="uid://de2a8umsjonkn" path="res://assets/ui/title_screen.png" id="1_umkjn"]
+[ext_resource type="Texture2D" uid="uid://i86gx32fgfhl" path="res://assets/ui/Logo_Type.png" id="2_2k7im"]
+[ext_resource type="Script" path="res://TitleScreen.gd" id="2_k0r07"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Farm" parent="." instance=ExtResource("1_sci7n")]
-position = Vector2(-28, -60)
+[node name="TitleScreen" type="Sprite2D" parent="."]
+position = Vector2(216.5, 123)
+scale = Vector2(0.493612, 0.645669)
+texture = ExtResource("1_umkjn")
+script = ExtResource("2_k0r07")
+
+[node name="LogoType" type="Sprite2D" parent="TitleScreen"]
+position = Vector2(-9.11642, -105.317)
+scale = Vector2(1.3, 0.994)
+texture = ExtResource("2_2k7im")
+hframes = 2
+
+[node name="LogoType2" type="Sprite2D" parent="TitleScreen"]
+position = Vector2(56.6399, -30.5294)
+rotation = -0.261799
+scale = Vector2(1.3, 0.994)
+texture = ExtResource("2_2k7im")
+hframes = 2
+frame = 1
+
+[node name="Button" type="Button" parent="TitleScreen"]
+offset_left = -329.206
+offset_top = 83.6341
+offset_right = -207.206
+offset_bottom = 114.634
+scale = Vector2(2, 2)
+text = "Demo Farming"
+
+[node name="Button2" type="Button" parent="TitleScreen"]
+offset_left = 37.4789
+offset_top = 82.0854
+offset_right = 158.479
+offset_bottom = 113.085
+scale = Vector2(2, 2)
+text = "Demo Cooking
+"
+
+[connection signal="pressed" from="TitleScreen/Button" to="TitleScreen" method="_on_button_pressed"]

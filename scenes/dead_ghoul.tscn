@@ -1,14 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://4g6i0weru5e1"]
+[gd_scene load_steps=14 format=3 uid="uid://4g6i0weru5e1"]
 
 [ext_resource type="Texture2D" uid="uid://81rugf8r3cnp" path="res://assets/animation/ghoul_dead.png" id="1_0xxq3"]
 [ext_resource type="Script" path="res://scripts/DeadBody.gd" id="1_d6nco"]
 [ext_resource type="Texture2D" uid="uid://crb2ebooo2ta2" path="res://assets/sprite/BayanganGhoul.png" id="1_yhp4x"]
 [ext_resource type="Texture2D" uid="uid://bmi3liujnbyx6" path="res://assets/sprite/jamur/BenihRegula.png" id="2_pxgt1"]
 [ext_resource type="Texture2D" uid="uid://bjluwqg3po1dx" path="res://assets/sprite/jamur/Regular Mushroom.png" id="3_x62h5"]
+[ext_resource type="Texture2D" uid="uid://5hxxvpwd1vxp" path="res://assets/sprite/jamur/Doom mushroom Seed.png" id="5_iq3j2"]
+[ext_resource type="Texture2D" uid="uid://brfk03li5k3ei" path="res://assets/sprite/jamur/Rotten Spice seed.png" id="6_27bya"]
+[ext_resource type="Texture2D" uid="uid://cxdq2ol40ibsd" path="res://assets/Jamur/Seed/Benih Crown.png" id="6_67fge"]
+[ext_resource type="Texture2D" uid="uid://deal1y30457ae" path="res://assets/sprite/jamur/Doom mushroom.png" id="9_3t1xh"]
+[ext_resource type="Texture2D" uid="uid://tvit0651yvdx" path="res://assets/sprite/jamur/Rotten mushroom.png" id="10_jr3rd"]
+[ext_resource type="Texture2D" uid="uid://c1jngt7srsllt" path="res://assets/Jamur/Mushroom/crown mushroom.png" id="10_qo3n7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_43xo7"]
 radius = 5.0
 height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unknt"]
+size = Vector2(49, 25)
 
 [node name="DeadGhoul" type="StaticBody2D"]
 z_index = 1
@@ -32,35 +41,178 @@ shape = SubResource("CapsuleShape2D_43xo7")
 [node name="Benih" type="Node2D" parent="."]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Benih"]
+[node name="0" type="Node2D" parent="Benih"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Benih/0"]
 position = Vector2(-12, 1)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_pxgt1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Benih"]
+[node name="Sprite2D2" type="Sprite2D" parent="Benih/0"]
 position = Vector2(-8, 10)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_pxgt1")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Benih"]
+[node name="Sprite2D3" type="Sprite2D" parent="Benih/0"]
 position = Vector2(0, 3)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_pxgt1")
 
+[node name="1" type="Node2D" parent="Benih"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Benih/1"]
+position = Vector2(-12, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_iq3j2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Benih/1"]
+position = Vector2(-8, 10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_iq3j2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Benih/1"]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_iq3j2")
+
+[node name="2" type="Node2D" parent="Benih"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Benih/2"]
+position = Vector2(-12, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_67fge")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Benih/2"]
+position = Vector2(-8, 10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_67fge")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Benih/2"]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_67fge")
+
+[node name="3" type="Node2D" parent="Benih"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Benih/3"]
+position = Vector2(-12, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_27bya")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Benih/3"]
+position = Vector2(-8, 10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_27bya")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Benih/3"]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_27bya")
+
 [node name="Jamur" type="Node2D" parent="."]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Jamur"]
+[node name="0" type="Node2D" parent="Jamur"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Jamur/0"]
 position = Vector2(-12, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_x62h5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Jamur"]
+[node name="Sprite2D2" type="Sprite2D" parent="Jamur/0"]
 position = Vector2(0, 2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_x62h5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Jamur"]
+[node name="Sprite2D3" type="Sprite2D" parent="Jamur/0"]
 position = Vector2(-8, 9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_x62h5")
+
+[node name="1" type="Node2D" parent="Jamur"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Jamur/1"]
+position = Vector2(-12, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_3t1xh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Jamur/1"]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_3t1xh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Jamur/1"]
+position = Vector2(-8, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_3t1xh")
+
+[node name="2" type="Node2D" parent="Jamur"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Jamur/2"]
+position = Vector2(-12, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_qo3n7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Jamur/2"]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_qo3n7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Jamur/2"]
+position = Vector2(-8, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_qo3n7")
+
+[node name="3" type="Node2D" parent="Jamur"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Jamur/3"]
+position = Vector2(-12, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_jr3rd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Jamur/3"]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_jr3rd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Jamur/3"]
+position = Vector2(-8, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_jr3rd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.5, 7.5)
+shape = SubResource("RectangleShape2D_unknt")
+
+[node name="Start" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -13.0
+offset_right = 24.0
+offset_bottom = 13.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+text = "Q to plant"
+horizontal_alignment = 1
+
+[node name="Countdown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Countdown" to="." method="_on_countdown_timeout"]

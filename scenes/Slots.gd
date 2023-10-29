@@ -27,12 +27,15 @@ func _process(_delta):
 func selected_slots_up():
 	active_slot = (active_slot + 1) % inven_length
 	selected_slots.emit(active_slot)
+	TimeInven.seed_slot = active_slot
+	
 	
 func selected_slots_down():
 	if active_slot == 0:
 		active_slot = inven_length - 1
 	else:
 		active_slot -= 1
+	TimeInven.seed_slot = active_slot
 	selected_slots.emit(active_slot)
 
 func scroll_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnovrabmepdjs"]
+[gd_scene load_steps=27 format=3 uid="uid://cnovrabmepdjs"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_asgfk"]
 [ext_resource type="Texture2D" uid="uid://cpwvgiym7h30e" path="res://assets/animation/player_idle.png" id="2_c38fx"]
@@ -8,8 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://csf5j2wunpt8y" path="res://assets/sfx/Walking-Grass_1.ogg" id="6_nxylx"]
 [ext_resource type="AudioStream" uid="uid://c1avxrhrqflbu" path="res://assets/sfx/Hit.ogg" id="7_ixuqr"]
 [ext_resource type="AudioStream" uid="uid://b4g5offbnyk36" path="res://assets/sfx/Attack.ogg" id="8_ks0p4"]
+[ext_resource type="PackedScene" uid="uid://cuuylp0kosjyo" path="res://scenes/seeds_inven.tscn" id="9_64s76"]
 [ext_resource type="Texture2D" uid="uid://fvx20fvh6100" path="res://assets/ui/Heart.png" id="9_bkx83"]
 [ext_resource type="Texture2D" uid="uid://coiycebwvpsqc" path="res://assets/ui/IsiHeart.png" id="10_smq8k"]
+[ext_resource type="Texture2D" uid="uid://bkyieiapwx8dl" path="res://assets/Jamur/button_q.png" id="11_lctj8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k8st"]
 radius = 5.0
@@ -356,6 +358,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_asgfk")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -423,6 +427,8 @@ stream = ExtResource("7_ixuqr")
 stream = ExtResource("8_ks0p4")
 volume_db = -10.0
 
+[node name="SeedsInven" parent="." instance=ExtResource("9_64s76")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 50
 
@@ -457,6 +463,7 @@ texture = ExtResource("9_bkx83")
 stretch_mode = 1
 
 [node name="Heart" type="TextureRect" parent="CanvasLayer/HeartUI"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 170.0
@@ -465,4 +472,60 @@ texture = ExtResource("10_smq8k")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 381.0
+offset_top = 3.0
+offset_right = 423.0
+offset_bottom = 34.0
+text = "Quit
+"
+
+[node name="TanamPrompt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -29)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_lctj8")
+
+[node name="Tanam" type="Label" parent="TanamPrompt"]
+visible = false
+anchors_preset = -1
+anchor_left = -1.375
+anchor_top = 1.75
+anchor_right = 2.719
+anchor_bottom = 2.562
+offset_left = 34.6667
+offset_top = -44.0
+offset_right = 34.6587
+offset_bottom = -43.984
+scale = Vector2(0.15, 0.15)
+text = "Untuk menanam"
+
+[node name="HarvestPrompt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -29)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_lctj8")
+
+[node name="Harvest" type="Label" parent="HarvestPrompt"]
+visible = false
+offset_left = -9.333
+offset_top = 11.667
+offset_right = 121.667
+offset_bottom = 37.667
+scale = Vector2(0.15, 0.15)
+text = "Untuk memanen"
+
+[node name="tanamCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="harvestCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="tanamCooldown" to="." method="_on_tanam_cooldown_timeout"]
+[connection signal="timeout" from="harvestCooldown" to="." method="_on_harvest_cooldown_timeout"]
+
+[editable path="SeedsInven"]
