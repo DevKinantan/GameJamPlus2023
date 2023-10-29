@@ -7,6 +7,8 @@ var mixer2 = null;
 var mixer3 = "Kuali";
 var food = null;
 
+var draggingFood = false;
+
 var mixer3Index = 0;
 
 var recipes = {
@@ -59,6 +61,10 @@ func _ready():
 	$CookPanel.position.y = 300
 	$CookPanel.visible = false
 
+func _process(delta):
+	if draggingFood:
+		$CookPanel/Food.global_position = get_global_mouse_position()
+
 
 func clear_mixer():
 	mixer1 = null
@@ -110,6 +116,7 @@ func cook_food():
 		return
 	
 	food_sprite.texture = food_sprites[dish]
+	food = dish
 	cook_button.visible = false
 
 
@@ -154,3 +161,11 @@ func _on_start_btn_pressed():
 	$StartPanel.visible = false
 	$CookPanel.position.y = 164
 	emit_signal("game_started")
+
+
+func _on_user_pointer_set_dish():
+	draggingFood = true
+
+
+func _on_user_pointer_set_order():
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm2704sgx5mxo"]
+[gd_scene load_steps=19 format=3 uid="uid://cm2704sgx5mxo"]
 
 [ext_resource type="PackedScene" uid="uid://c4dpkjyxgds0m" path="res://scenes/Ingredients/Core/user_pointer.tscn" id="1_lo1m6"]
 [ext_resource type="Script" path="res://scripts/cooking.gd" id="1_qv80s"]
@@ -20,6 +20,9 @@
 font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b46x"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlw7u"]
 size = Vector2(28, 28)
 
 [node name="Cooking" type="Node2D"]
@@ -153,13 +156,20 @@ offset_bottom = 30.0
 texture_normal = ExtResource("11_qv224")
 texture_hover = ExtResource("12_xc2u8")
 
-[node name="Food" type="Node2D" parent="CookPanel"]
+[node name="Food" type="Node2D" parent="CookPanel" groups=["Dish"]]
 position = Vector2(175, 44)
 
 [node name="Sprite2D" type="Sprite2D" parent="CookPanel/Food"]
 scale = Vector2(0.7, 0.7)
 
+[node name="Area2D" type="Area2D" parent="CookPanel/Food"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookPanel/Food/Area2D"]
+shape = SubResource("RectangleShape2D_hlw7u")
+
+[connection signal="set_dish" from="UserPointer" to="." method="_on_user_pointer_set_dish"]
 [connection signal="set_mixer" from="UserPointer" to="." method="_on_user_pointer_set_mixer"]
+[connection signal="set_order" from="UserPointer" to="." method="_on_user_pointer_set_order"]
 [connection signal="pressed" from="StartPanel/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="CookPanel/CookBtn" to="." method="_on_cook_btn_pressed"]
 [connection signal="pressed" from="CookPanel/Mixer3/UpBtn" to="." method="_on_up_btn_pressed"]
