@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpwvgiym7h30e" path="res://assets/animation/player_idle.png" id="3_ri4nu"]
 [ext_resource type="Texture2D" uid="uid://dfijisbsri5x5" path="res://assets/animation/player_walking.png" id="4_64epg"]
 [ext_resource type="Texture2D" uid="uid://clkafaagtqi2v" path="res://assets/animation/player_attacking.png" id="5_s3y2l"]
-[ext_resource type="Texture2D" uid="uid://cw3wfbmat86yi" path="res://assets/sprite/Q_Key_Dark.png" id="6_bcjtn"]
+[ext_resource type="Texture2D" uid="uid://bkyieiapwx8dl" path="res://assets/Jamur/button_q.png" id="6_gcvmh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k8st"]
 radius = 5.0
@@ -42,29 +42,36 @@ hframes = 4
 [node name="TanamPrompt" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -29)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("6_bcjtn")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_gcvmh")
 
 [node name="Tanam" type="Label" parent="TanamPrompt"]
 visible = false
-offset_left = -60.0
-offset_top = 40.0
-offset_right = 71.0
-offset_bottom = 66.0
+anchors_preset = -1
+anchor_left = -1.375
+anchor_top = 1.75
+anchor_right = 2.719
+anchor_bottom = 2.562
+offset_left = 34.6667
+offset_top = -44.0
+offset_right = 34.6587
+offset_bottom = -43.984
+scale = Vector2(0.15, 0.15)
 text = "Untuk menanam"
 
 [node name="HarvestPrompt" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -29)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("6_bcjtn")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_gcvmh")
 
 [node name="Harvest" type="Label" parent="HarvestPrompt"]
 visible = false
-offset_left = -66.6667
-offset_top = 40.0
-offset_right = 64.3333
-offset_bottom = 66.0
+offset_left = -9.333
+offset_top = 11.667
+offset_right = 121.667
+offset_bottom = 37.667
+scale = Vector2(0.15, 0.15)
 text = "Untuk memanen"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

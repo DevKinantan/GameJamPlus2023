@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuuylp0kosjyo"]
+[gd_scene load_steps=12 format=3 uid="uid://cuuylp0kosjyo"]
 
 [ext_resource type="Script" path="res://scenes/seeds_inven.gd" id="1_7qnhb"]
 [ext_resource type="Script" path="res://scenes/Slots.gd" id="2_68dap"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://cymkyeccjpgxw" path="res://assets/Jamur/Seed/Doom mushroom Seed.png" id="4_8m8tm"]
 [ext_resource type="Texture2D" uid="uid://bu7a0v1bllh54" path="res://assets/Jamur/Seed/BenihDiamond.png" id="5_gwck1"]
 [ext_resource type="Texture2D" uid="uid://6j37p04ovw5l" path="res://assets/Jamur/Seed/Rotten Spice seed.png" id="6_i0pjd"]
+[ext_resource type="Texture2D" uid="uid://b884httohqrcp" path="res://assets/Jamur/Mushroom/Regular Mushroom.png" id="7_xanmb"]
+[ext_resource type="Texture2D" uid="uid://lmop3mg378xg" path="res://assets/Jamur/Mushroom/Doom mushroom.png" id="8_wqum3"]
+[ext_resource type="Texture2D" uid="uid://bw3q5jwnt3nwe" path="res://assets/Jamur/Mushroom/diamond mushroom.png" id="9_kwxf6"]
+[ext_resource type="Texture2D" uid="uid://b17iopt5unxrf" path="res://assets/Jamur/Mushroom/Rotten mushroom.png" id="10_msrgy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_osfp8"]
+font_size = 10
 
 [node name="SeedsInven" type="CanvasLayer"]
 script = ExtResource("1_7qnhb")
@@ -28,6 +35,11 @@ script = ExtResource("2_68dap")
 position = Vector2(20, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_xi7nl")
+
+[node name="Label" type="Label" parent="Seeds/Slot1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Slot2" type="Panel" parent="Seeds"]
 visible = false
@@ -58,6 +70,61 @@ script = ExtResource("2_68dap")
 position = Vector2(20, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_i0pjd")
+
+[node name="Yield" type="VBoxContainer" parent="."]
+anchors_preset = -1
+
+[node name="Reg" type="Sprite2D" parent="Yield"]
+visible = false
+position = Vector2(16, 23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xanmb")
+
+[node name="Label" type="Label" parent="Yield/Reg"]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 30.0
+offset_bottom = 11.0
+label_settings = SubResource("LabelSettings_osfp8")
+
+[node name="Doom" type="Sprite2D" parent="Yield"]
+visible = false
+position = Vector2(16, 33)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_wqum3")
+
+[node name="Label2" type="Label" parent="Yield/Doom"]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 30.0
+offset_bottom = 11.0
+label_settings = SubResource("LabelSettings_osfp8")
+
+[node name="Dia" type="Sprite2D" parent="Yield"]
+visible = false
+position = Vector2(16, 43)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_kwxf6")
+
+[node name="Label3" type="Label" parent="Yield/Dia"]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 30.0
+offset_bottom = 11.0
+label_settings = SubResource("LabelSettings_osfp8")
+
+[node name="Rot" type="Sprite2D" parent="Yield"]
+visible = false
+position = Vector2(16, 54)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_msrgy")
+
+[node name="Label4" type="Label" parent="Yield/Rot"]
+offset_left = 12.0
+offset_top = -6.0
+offset_right = 30.0
+offset_bottom = 11.0
+label_settings = SubResource("LabelSettings_osfp8")
 
 [node name="scrollCooldown" type="Timer" parent="."]
 one_shot = true

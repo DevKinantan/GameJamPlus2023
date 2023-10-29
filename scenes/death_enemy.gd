@@ -4,6 +4,7 @@ signal player_inside(status)
 
 var canPlant : bool
 @onready var player = get_parent().get_node("Player")
+@onready var inven = get_parent().get_node("SeedsInven")
 @onready var _harvest = preload("res://scenes/harvesting.tscn")
 @onready var selected_seeds : String
 
@@ -36,3 +37,4 @@ func call_mushroom():
 	harvest_mushroom.global_position = global_position
 	harvest_mushroom.plant_result = selected_seeds
 	harvest_mushroom.connect("harvest_time", player.player_can_harvest)
+	harvest_mushroom.connect("harvested_shroom", inven.harvest_yield)
