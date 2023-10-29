@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxvhspkqahxtp"]
+
+[ext_resource type="Texture2D" uid="uid://bm1dmyefwb1uy" path="res://assets/animation/pig_dead.png" id="1_4tp87"]
+[ext_resource type="Script" path="res://scripts/DeadBody.gd" id="1_44tnu"]
+[ext_resource type="Texture2D" uid="uid://bynldf85n8w1h" path="res://assets/sprite/BayanganBrute.png" id="1_bkgg5"]
+[ext_resource type="Texture2D" uid="uid://bmi3liujnbyx6" path="res://assets/sprite/jamur/BenihRegula.png" id="2_baqaa"]
+[ext_resource type="Texture2D" uid="uid://bjluwqg3po1dx" path="res://assets/sprite/jamur/Regular Mushroom.png" id="3_tyoa7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ergd2"]
+radius = 5.0
+height = 34.0
+
+[node name="DeadPig" type="StaticBody2D"]
+z_index = 1
+script = ExtResource("1_44tnu")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 12)
+scale = Vector2(1.625, 1)
+texture = ExtResource("1_bkgg5")
+
+[node name="DeadSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_4tp87")
+hframes = 18
+frame = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ergd2")
+
+[node name="Benih" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Benih"]
+position = Vector2(-12, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_baqaa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Benih"]
+position = Vector2(-8, 10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_baqaa")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Benih"]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_baqaa")
+
+[node name="Jamur" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Jamur"]
+position = Vector2(-12, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tyoa7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Jamur"]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tyoa7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Jamur"]
+position = Vector2(-8, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tyoa7")

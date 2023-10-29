@@ -1,7 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv0c7fnbntwuy"]
 
-[ext_resource type="PackedScene" uid="uid://bray4gt2uafaq" path="res://scenes/farming_map.tscn" id="1_80qe2"]
+[ext_resource type="PackedScene" uid="uid://3u3nqu17l70u" path="res://scenes/farm.tscn" id="1_sci7n"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Farm" parent="." instance=ExtResource("1_80qe2")]
+[node name="Farm" parent="." instance=ExtResource("1_sci7n")]
+position = Vector2(-28, -60)

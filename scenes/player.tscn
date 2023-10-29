@@ -1,14 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnovrabmepdjs"]
+[gd_scene load_steps=25 format=3 uid="uid://cnovrabmepdjs"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_asgfk"]
 [ext_resource type="Texture2D" uid="uid://cpwvgiym7h30e" path="res://assets/animation/player_idle.png" id="2_c38fx"]
 [ext_resource type="Texture2D" uid="uid://c0k7ro0ixs4un" path="res://assets/sprite/BayanganPlayer.png" id="2_ijh64"]
 [ext_resource type="Texture2D" uid="uid://dfijisbsri5x5" path="res://assets/animation/player_walking.png" id="3_hwg4y"]
 [ext_resource type="Texture2D" uid="uid://clkafaagtqi2v" path="res://assets/animation/player_attacking.png" id="5_0bhic"]
+[ext_resource type="AudioStream" uid="uid://csf5j2wunpt8y" path="res://assets/sfx/Walking-Grass_1.ogg" id="6_nxylx"]
+[ext_resource type="AudioStream" uid="uid://c1avxrhrqflbu" path="res://assets/sfx/Hit.ogg" id="7_ixuqr"]
+[ext_resource type="AudioStream" uid="uid://b4g5offbnyk36" path="res://assets/sfx/Attack.ogg" id="8_ks0p4"]
+[ext_resource type="Texture2D" uid="uid://fvx20fvh6100" path="res://assets/ui/Heart.png" id="9_bkx83"]
+[ext_resource type="Texture2D" uid="uid://coiycebwvpsqc" path="res://assets/ui/IsiHeart.png" id="10_smq8k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k8st"]
 radius = 5.0
-height = 16.0
+height = 12.0
 
 [sub_resource type="Animation" id="Animation_c3yn0"]
 resource_name = "AttackRight"
@@ -51,11 +56,54 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_24a5j"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(2.5, 2.5, 2.5, 1), Color(5, 5, 5, 1), Color(2.5, 2.5, 2.5, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_j1ge8"]
 resource_name = "Idle"
 length = 0.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,6 +115,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IdleSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jjjhn"]
@@ -119,6 +179,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IdleSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.5, 2.5, 2.5, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_kp5k3"]
 resource_name = "WalkRight"
@@ -136,21 +208,151 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StepSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fwo7v"]
 _data = {
 "AttackRight": SubResource("Animation_c3yn0"),
+"Hit": SubResource("Animation_24a5j"),
 "Idle": SubResource("Animation_j1ge8"),
 "RESET": SubResource("Animation_jjjhn"),
 "WalkRight": SubResource("Animation_kp5k3")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oyd6"]
-radius = 8.0
 height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jb7im"]
 radius = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yj7nh"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_h4ves"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.784314), Color(0, 0, 0, 0.588235), Color(0, 0, 0, 0.392157), Color(0, 0, 0, 0.196078), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/ColorRect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ki0o2"]
+resource_name = "FadeblackTransfer"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.196078), Color(0, 0, 0, 0.392157), Color(0, 0, 0, 0.588235), Color(0, 0, 0, 0.784314), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0.784314), Color(0, 0, 0, 0.588235), Color(0, 0, 0, 0.392157), Color(0, 0, 0, 0.196078), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"freeze_state"
+}, {
+"args": [],
+"method": &"go_back_and_heal"
+}, {
+"args": [],
+"method": &"attack_animation_finish"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2xm3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iv1mu"]
+_data = {
+"FadeOut": SubResource("Animation_h4ves"),
+"FadeblackTransfer": SubResource("Animation_ki0o2"),
+"RESET": SubResource("Animation_2xm3h")
+}
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -162,11 +364,12 @@ scale = Vector2(1.10352, 0.9)
 texture = ExtResource("2_ijh64")
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(2.5, 2.5, 2.5, 1)
 texture = ExtResource("2_c38fx")
 hframes = 6
 
 [node name="WalkSprite" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("3_hwg4y")
 hframes = 8
 
@@ -201,3 +404,65 @@ disabled = true
 shape = SubResource("CircleShape2D_jb7im")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_right = 2350
+
+[node name="PlayerHurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
+shape = SubResource("CapsuleShape2D_yj7nh")
+
+[node name="StepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nxylx")
+volume_db = -10.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ixuqr")
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ks0p4")
+volume_db = -10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../../Camera2D")
+libraries = {
+"": SubResource("AnimationLibrary_iv1mu")
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 100
+offset_left = -1405.0
+offset_top = -1026.0
+offset_right = 1456.0
+offset_bottom = 930.0
+color = Color(0, 0, 0, 0)
+
+[node name="HeartUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 624.0
+offset_bottom = 314.0
+scale = Vector2(0.5, 0.5)
+
+[node name="BlankHeart" type="TextureRect" parent="CanvasLayer/HeartUI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 170.0
+offset_bottom = 42.0
+texture = ExtResource("9_bkx83")
+stretch_mode = 1
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HeartUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 170.0
+offset_bottom = 42.0
+texture = ExtResource("10_smq8k")
+expand_mode = 1
+stretch_mode = 1
+
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]

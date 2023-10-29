@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bray4gt2uafaq"]
+[gd_scene load_steps=21 format=3 uid="uid://bray4gt2uafaq"]
 
 [ext_resource type="Texture2D" uid="uid://wrcdt2cilnr8" path="res://assets/tileset/Border Tileset.png" id="1_2lgv2"]
 [ext_resource type="Texture2D" uid="uid://p4cv61jkpoq3" path="res://assets/tileset/Ground Tileset.png" id="2_flxw0"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://catwro88uxwvc" path="res://assets/sprite/karakter utama.png" id="5_mf67y"]
 [ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="7_nuowg"]
 [ext_resource type="PackedScene" uid="uid://coesor0lffw60" path="res://scenes/ghoul.tscn" id="8_5qhr7"]
+[ext_resource type="Texture2D" uid="uid://c0k7ro0ixs4un" path="res://assets/sprite/BayanganPlayer.png" id="9_77tcn"]
+[ext_resource type="Texture2D" uid="uid://bmy4vcl8n6gxu" path="res://assets/sprite/Mushroom King.png" id="9_jeoh0"]
+[ext_resource type="PackedScene" uid="uid://cqlrggm6t1fjj" path="res://scenes/stump.tscn" id="11_genae"]
+[ext_resource type="PackedScene" uid="uid://bevhustj3nn14" path="res://scenes/pig.tscn" id="12_oj85k"]
+[ext_resource type="PackedScene" uid="uid://d1cmlu2l45gku" path="res://scenes/brute.tscn" id="13_8bbhq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ddnk2"]
 tile_data = PackedInt32Array(917504, 327681, 3, 983040, 1, 4, 1048576, 1, 5, 851969, 131073, 7, 917505, 196609, 6, 983041, 1, 7, 1048577, 327681, 3, 1114113, 327681, 4, 1179649, 327681, 4, 1245185, 1, 5, 655362, 65537, 4, 720898, 65537, 4, 786434, 65537, 4, 851970, 1, 7, 917506, 327681, 7, 983042, 327681, 6, 1048578, 65537, 4, 1114114, 65537, 4, 1179650, 65537, 4, 1245186, 65537, 5, 65539, 65537, 4, 131075, 327681, 6, 196611, 262145, 7, 262147, 1, 6, 327683, 65537, 7, 393219, 262145, 6, 458755, 327681, 7, 524291, 65537, 6, 589827, 262145, 6, 655363, 131073, 6, 720899, 1, 7, 786435, 65537, 7, 851971, 327681, 7, 917507, 65537, 4, 983043, 65537, 4, 1048579, 65537, 4, 1114115, 262145, 6, 1179651, 65537, 4, 1245187, 327681, 3, 1310723, 1, 4, 65540, 65537, 4, 131076, 65537, 6, 196612, 196609, 7, 262148, 65537, 7, 327684, 65537, 7, 393220, 131073, 7, 458756, 131073, 6, 524292, 262145, 7, 589828, 65537, 4, 655364, 65537, 4, 720900, 262145, 6, 786436, 65537, 4, 851972, 65537, 4, 917508, 65537, 4, 983044, 65537, 6, 1048580, 65537, 4, 1114116, 131073, 7, 1179652, 131073, 6, 1245188, 65537, 4, 1310724, 327681, 6, 5, 262145, 6, 65541, 262145, 7, 131077, 327681, 7, 196613, 65537, 4, 262149, 131073, 7, 327685, 65537, 4, 393221, 65537, 4, 458757, 65537, 4, 524293, 65537, 4, 589829, 1, 7, 655365, 131073, 7, 720901, 65537, 4, 786437, 131073, 6, 851973, 65537, 4, 917509, 65537, 4, 983045, 65537, 4, 1048581, 65537, 4, 1114117, 65537, 4, 1179653, 131073, 7, 1245189, 65537, 6, 1310725, 65537, 6, 6, 65537, 6, 65542, 65537, 6, 131078, 65537, 4, 196614, 65537, 4, 262150, 65537, 4, 327686, 65537, 4, 393222, 262145, 7, 458758, 65537, 7, 524294, 196609, 7, 589830, 131073, 6, 655366, 262145, 7, 720902, 65537, 4, 786438, 65537, 4, 851974, 262145, 6, 917510, 327681, 7, 983046, 65537, 4, 1048582, 65537, 4, 1114118, 65537, 4, 1179654, 1, 7, 1245190, 262145, 6, 1310726, 65537, 4, 7, 1, 6, 65543, 1, 7, 131079, 65537, 4, 196615, 65537, 4, 262151, 65537, 4, 327687, 65537, 4, 393223, 65537, 4, 458759, 65537, 4, 524295, 65537, 4, 589831, 65537, 4, 655367, 65537, 4, 720903, 65537, 4, 786439, 65537, 4, 851975, 327681, 6, 917511, 196609, 6, 983047, 131073, 6, 1048583, 65537, 4, 1114119, 65537, 4, 1179655, 131073, 6, 1245191, 131073, 7, 8, 262145, 7, 65544, 65537, 7, 131080, 65537, 4, 196616, 65537, 4, 262152, 65537, 4, 327688, 1, 6, 393224, 65537, 4, 458760, 65537, 4, 524296, 65537, 4, 589832, 131073, 7, 655368, 65537, 4, 720904, 65537, 7, 786440, 65537, 4, 851976, 65537, 4, 917512, 65537, 4, 983048, 65537, 4, 1048584, 65537, 4, 1114120, 131073, 7, 1179656, 327681, 7, 1245192, 65537, 6, 9, 65537, 7, 65545, 131073, 7, 131081, 65537, 7, 196617, 196609, 6, 262153, 65537, 4, 327689, 327681, 7, 393225, 65537, 4, 458761, 1, 7, 524297, 65537, 4, 589833, 65537, 4, 655369, 65537, 4, 720905, 1, 6, 786441, 131073, 6, 851977, 1, 7, 917513, 262145, 6, 983049, 262145, 6, 1048585, 196609, 7, 1114121, 196609, 7, 1179657, 1, 7, 1245193, 65537, 4, 10, 327681, 7, 65546, 65537, 4, 131082, 327681, 6, 196618, 65537, 4, 262154, 65537, 4, 327690, 65537, 4, 393226, 65537, 4, 458762, 65537, 4, 524298, 65537, 4, 589834, 65537, 4, 655370, 262145, 7, 720906, 327681, 7, 786442, 131073, 7, 851978, 65537, 4, 917514, 65537, 4, 983050, 327681, 6, 1048586, 65537, 6, 1114122, 262145, 6, 1179658, 65537, 4, 11, 65537, 4, 65547, 65537, 4, 131083, 65537, 6, 196619, 327681, 7, 262155, 327681, 6, 327691, 131073, 6, 393227, 262145, 7, 458763, 262145, 7, 524299, 1, 7, 589835, 196609, 6, 655371, 196609, 6, 720907, 65537, 6, 786443, 131073, 6, 851979, 65537, 6, 917515, 196609, 6, 983051, 327681, 6, 1048587, 65537, 4, 65548, 65537, 4, 131084, 262145, 7, 196620, 65537, 4, 262156, 1, 6, 327692, 65537, 6, 393228, 131073, 6, 458764, 65537, 4, 524300, 65537, 4, 589836, 327681, 7, 655372, 196609, 7, 720908, 131073, 7, 786444, 65537, 6, 851980, 196609, 6, 917516, 327681, 7, 983052, 65537, 4, 1048588, 65537, 4)
@@ -465,7 +470,7 @@ sources/3 = SubResource("TileSetAtlasSource_6g1gr")
 sources/4 = SubResource("TileSetAtlasSource_q83bo")
 pattern_0 = SubResource("TileMapPattern_ddnk2")
 
-[node name="Farm" type="Node2D"]
+[node name="Farm_bkp" type="Node2D"]
 y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -544,7 +549,7 @@ position = Vector2(386, 114)
 texture = ExtResource("5_mf67y")
 
 [node name="Player" parent="." instance=ExtResource("7_nuowg")]
-position = Vector2(456, 104)
+position = Vector2(423, 174)
 
 [node name="Ghoul" parent="." instance=ExtResource("8_5qhr7")]
 position = Vector2(1492, 742)
@@ -569,3 +574,69 @@ position = Vector2(2189, 962)
 
 [node name="Ghoul8" parent="." instance=ExtResource("8_5qhr7")]
 position = Vector2(883, 948)
+
+[node name="bayangan" type="Sprite2D" parent="."]
+position = Vector2(474, 22)
+scale = Vector2(8.01562, 4.46875)
+texture = ExtResource("9_77tcn")
+
+[node name="MushroomKing" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(452, -26)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_jeoh0")
+
+[node name="EnemiesLocation" type="Node2D" parent="."]
+
+[node name="Ghoul" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(2098, 819)
+
+[node name="Ghoul2" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(2222, 815)
+
+[node name="Ghoul3" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(1558, 795)
+
+[node name="Ghoul4" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(1484, 709)
+
+[node name="Ghoul5" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(459, 1202)
+
+[node name="Ghoul6" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(174, 783)
+
+[node name="Ghoul7" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(518, 590)
+
+[node name="Ghoul8" parent="EnemiesLocation" instance=ExtResource("8_5qhr7")]
+position = Vector2(1019, 1181)
+
+[node name="Stump" parent="EnemiesLocation" instance=ExtResource("11_genae")]
+position = Vector2(791, 781)
+
+[node name="Stump2" parent="EnemiesLocation" instance=ExtResource("11_genae")]
+position = Vector2(2012, 1095)
+
+[node name="Stump3" parent="EnemiesLocation" instance=ExtResource("11_genae")]
+position = Vector2(2068, 1221)
+
+[node name="Stump4" parent="EnemiesLocation" instance=ExtResource("11_genae")]
+position = Vector2(1513, 1535)
+
+[node name="Pig" parent="EnemiesLocation" instance=ExtResource("12_oj85k")]
+position = Vector2(1098, 1452)
+
+[node name="Pig2" parent="EnemiesLocation" instance=ExtResource("12_oj85k")]
+position = Vector2(1006, 512)
+
+[node name="Brute" parent="EnemiesLocation" instance=ExtResource("13_8bbhq")]
+position = Vector2(2162, 857)
+
+[node name="Brute2" parent="EnemiesLocation" instance=ExtResource("13_8bbhq")]
+position = Vector2(1463, 788)
+
+[node name="Brute3" parent="EnemiesLocation" instance=ExtResource("13_8bbhq")]
+position = Vector2(1286, 1162)
+
+[node name="BodyLocation" type="Node2D" parent="EnemiesLocation"]

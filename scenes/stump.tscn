@@ -1,0 +1,351 @@
+[gd_scene load_steps=21 format=3 uid="uid://cqlrggm6t1fjj"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_h7ffm"]
+[ext_resource type="PackedScene" uid="uid://c57b6xkegcp7a" path="res://scenes/dead_stump.tscn" id="2_7av6q"]
+[ext_resource type="Texture2D" uid="uid://bynldf85n8w1h" path="res://assets/sprite/BayanganBrute.png" id="3_mmyhj"]
+[ext_resource type="Texture2D" uid="uid://bht136fqmk6dd" path="res://assets/animation/stump_idle.png" id="3_pgs42"]
+[ext_resource type="Texture2D" uid="uid://cl2a0tpg36qm8" path="res://assets/animation/stump_killed.png" id="4_c25ue"]
+[ext_resource type="Texture2D" uid="uid://cskc5lfocq6ph" path="res://assets/animation/stump_attacking.png" id="5_fustt"]
+[ext_resource type="AudioStream" uid="uid://c1avxrhrqflbu" path="res://assets/sfx/Hit.ogg" id="6_p05d3"]
+[ext_resource type="AudioStream" uid="uid://48x4mynwlb27" path="res://assets/sfx/77_flesh_02.ogg" id="7_kx1hk"]
+[ext_resource type="AudioStream" uid="uid://cbvxfuyljwwjl" path="res://assets/sfx/Proyektil.ogg" id="8_jhoap"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xfla"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="Animation" id="Animation_tsd5k"]
+resource_name = "Attack"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_finish"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e7rsx"]
+resource_name = "Dead"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeadSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"disable_enemy_hitbox"
+}, {
+"args": [],
+"method": &"spawn_death_body"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cceqd"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(2.5, 2.5, 2.5, 1), Color(5, 5, 5, 1), Color(2.5, 2.5, 2.5, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xniij"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IdleSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_md4t1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkingSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeadSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IdleSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_07sfw"]
+resource_name = "Walking"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WalkingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rq1qo"]
+_data = {
+"Attack": SubResource("Animation_tsd5k"),
+"Dead": SubResource("Animation_e7rsx"),
+"Hit": SubResource("Animation_cceqd"),
+"Idle": SubResource("Animation_xniij"),
+"RESET": SubResource("Animation_md4t1"),
+"Walking": SubResource("Animation_07sfw")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dvu7i"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0aen"]
+radius = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r4nfp"]
+radius = 9.0
+height = 26.0
+
+[node name="Stump" type="CharacterBody2D"]
+z_index = 1
+collision_priority = 2.0
+slide_on_ceiling = false
+script = ExtResource("1_h7ffm")
+death_body_scene = ExtResource("2_7av6q")
+hp = 5
+speed = 0.0
+knockback_power = 30.0
+push_power = 0.0
+drawback_power = 0.0
+have_projectile_atk = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-0.999999, 12)
+scale = Vector2(1.3125, 1)
+texture = ExtResource("3_mmyhj")
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_pgs42")
+hframes = 4
+
+[node name="WalkingSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_pgs42")
+hframes = 4
+
+[node name="DeadSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_c25ue")
+hframes = 18
+
+[node name="AttackSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_fustt")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1xfla")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_rq1qo")
+}
+
+[node name="EnemyHurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_dvu7i")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_q0aen")
+
+[node name="WanderingTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("CapsuleShape2D_r4nfp")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p05d3")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kx1hk")
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jhoap")
+
+[connection signal="area_entered" from="EnemyHurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="WanderingTimer" to="." method="_on_wandering_timer_timeout"]
+[connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
