@@ -3,7 +3,8 @@ extends Node2D
 #@export var can_drag = true
 signal set_mixer(mixer, ingredients)
 signal set_dish
-signal set_order
+signal set_order(order)
+signal reset_food_pos
 
 var picked_item = null
 var picked_food = false
@@ -25,14 +26,19 @@ func _input(event):
 					print("Found " + area.get_parent().name)
 					picked_item = area.get_parent()
 					picked_item.set_drag_mode(true)
+					$ClickSFX.play()
 					#can_drag = false
 					break
 			
 			for area in mouse_collision.get_overlapping_areas():
 				if area.get_parent().is_in_group("Dish"):
-					emit_signal("set_dish")
-					picked_food = true
-					break
+					var dish = area.get_parent()
+					if dish.get_node("Sprite2D").texture != null:
+						emit_signal("set_dish")
+						picked_food = true
+						$ClickSFX.play()
+						
+						break
 			
 				#if area.is_in_group("Loot"):
 				#	area.getLoot()
@@ -49,6 +55,7 @@ func _input(event):
 						var mixer = area.get_parent()
 						mixer.get_node("Sprite2D").texture = picked_item.get_node("Sprite2D").texture
 						emit_signal("set_mixer", mixer.name, picked_item.name)
+						$ClickSFX.play()
 						break
 				#can_drag = true
 				picked_item = null
@@ -56,7 +63,8 @@ func _input(event):
 			if picked_food:
 				for area in mouse_collision.get_overlapping_areas():
 					if area.get_parent().is_in_group("Order"):
-						area.get_parent().get_order()
-						emit_signal("set_order")
+						emit_signal("set_order", area.get_parent().get_order())
+						area.get_parent().leave()
 						break
+				emit_signal("reset_food_pos")
 				picked_food = false

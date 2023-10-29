@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#signal get_food(dish)
+
 var order = null
 var rng = RandomNumberGenerator.new()
 
@@ -34,9 +36,14 @@ func order_food():
 	$OrderBubble/Label.text = order
 	$OrderBubble.visible = true
 
+func leave():
+	queue_free()
+
 
 func get_order():
-	print(order)
+	return order
+#	print("Send " + order + " from customer")
+#	emit_signal("get_food", order)
 #
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bk6txek6l8dkb"]
+[gd_scene load_steps=34 format=3 uid="uid://bk6txek6l8dkb"]
 
 [ext_resource type="Script" path="res://scripts/restaurant.gd" id="1_0rk40"]
 [ext_resource type="Texture2D" uid="uid://dl0lwq17w8ddi" path="res://assets/sprite/Resto.png" id="2_3hrrm"]
 [ext_resource type="PackedScene" uid="uid://cnovrabmepdjs" path="res://scenes/player.tscn" id="2_8b0ld"]
 [ext_resource type="PackedScene" uid="uid://cm2704sgx5mxo" path="res://scenes/cooking.tscn" id="3_o33ep"]
+[ext_resource type="AudioStream" uid="uid://3m6ktg4fegac" path="res://assets/audio/confirm_style_3_echo_001.wav" id="5_joswn"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bhvh2"]
 b = Vector2(6.70535, -26.6278)
@@ -89,6 +90,12 @@ b = Vector2(41.8386, -79.684)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_do4tg"]
 b = Vector2(380.712, 199.896)
 
+[sub_resource type="LabelSettings" id="LabelSettings_c5d8c"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu7rk"]
+font_size = 10
+
 [node name="Restaurant" type="Node2D"]
 script = ExtResource("1_0rk40")
 
@@ -169,115 +176,148 @@ shape = SubResource("SegmentShape2D_ca6i1")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(50, 102)
 rotation = 0.967109
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_tydoq")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(102, 99)
 rotation = 2.17101
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_fr7ax")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(102, 97)
 rotation = 2.17101
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_et6ai")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(186, 95)
 rotation = 2.17101
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_f52mx")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(237, 108)
 rotation = 2.17101
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_ix2hw")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(298, 114)
 rotation = 2.17101
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_kkdbi")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(307, 106)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_lkunl")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(290, 79)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_48opi")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(258, 69)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_hqp8l")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(265, 61)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_8rd4q")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(298, 57)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_s1nve")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(325, 56)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_nps4m")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(362, 59)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_it26m")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(400, 72)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_knwx6")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(402, 110)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_3nhts")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(414, 142)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_t5gag")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(427, 150)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_ldc7d")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(-1.00002, 152)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_ldc7d")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="Colliisions"]
 position = Vector2(428, 241)
 rotation = 2.6581
-scale = Vector2(1, 1)
 shape = SubResource("SegmentShape2D_do4tg")
 
+[node name="TimerText" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 93.0
+offset_bottom = 29.0
+text = "Timer: 120"
+label_settings = SubResource("LabelSettings_c5d8c")
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FinishPanel" type="Panel" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 113.0
+offset_top = 65.0
+offset_right = 313.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FinishLabel" type="Label" parent="FinishPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -8.5
+offset_right = 15.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FINISHED"
+label_settings = SubResource("LabelSettings_hu7rk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinishSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_joswn")
+
+[connection signal="customer_left" from="Cooking" to="." method="_on_cooking_customer_left"]
 [connection signal="game_started" from="Cooking" to="." method="_on_cooking_game_started"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

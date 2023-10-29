@@ -1,6 +1,7 @@
 extends Node2D
 
 signal game_started
+signal customer_left
 
 var mixer1 = null;
 var mixer2 = null;
@@ -48,7 +49,7 @@ var mixer3_sprites = {
 
 var mixer3_cycles = ["Kuali", "Grill", "Oven", "Blender"]
 
-var customer_scene = preload("res://scenes/Customer/customer.tscn")
+#var customer_scene = preload("res://scenes/Customer/customer.tscn")
 
 @onready var mixer1_sprite = get_node("CookPanel/Mixer1/Sprite2D")
 @onready var mixer2_sprite = get_node("CookPanel/Mixer2/Sprite2D")
@@ -56,10 +57,13 @@ var customer_scene = preload("res://scenes/Customer/customer.tscn")
 @onready var food_sprite = get_node("CookPanel/Food/Sprite2D")
 @onready var cook_button = get_node("CookPanel/CookBtn")
 
+@onready var originFoodPos = $CookPanel/Food.global_position;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CookPanel.position.y = 300
 	$CookPanel.visible = false
+	print(originFoodPos)
 
 func _process(delta):
 	if draggingFood:
@@ -72,8 +76,6 @@ func clear_mixer():
 	
 	mixer2 = null
 	mixer2_sprite.texture = null
-	
-	food = null
 
 
 func canMakeDish(ingredients: Array) -> String:
@@ -113,17 +115,19 @@ func cook_food():
 	clear_mixer()
 	
 	if dish == "Unknown Dish":
+		$DenySFX.play()
 		return
 	
 	food_sprite.texture = food_sprites[dish]
 	food = dish
 	cook_button.visible = false
+	$CookSFX.play()
 
 
-func spawn_customer():
-	var customer = customer_scene.instantiate()
-	get_tree().get_root().add_child(customer)
-	return customer
+#func spawn_customer():
+#	var customer = customer_scene.instantiate()
+##	get_tree().get_root().add_child(customer)
+#	return customer
 
 
 func cycle_mixer3(increment: int):
@@ -136,6 +140,7 @@ func cycle_mixer3(increment: int):
 	
 	mixer3_sprite.texture = mixer3_sprites[mixer3_cycles[mixer3Index]]
 	mixer3 = mixer3_cycles[mixer3Index]
+
 
 func _on_user_pointer_set_mixer(mixer, ingredients):
 	if mixer == "Mixer1":
@@ -150,10 +155,12 @@ func _on_cook_btn_pressed():
 
 func _on_up_btn_pressed():
 	cycle_mixer3(-1)
+	$ClickSFX.play()
 
 
 func _on_down_btn_pressed():
 	cycle_mixer3(1)
+	$ClickSFX.play()
 
 
 func _on_start_btn_pressed():
@@ -161,11 +168,27 @@ func _on_start_btn_pressed():
 	$StartPanel.visible = false
 	$CookPanel.position.y = 164
 	emit_signal("game_started")
+	$ClickSFX.play()
 
 
 func _on_user_pointer_set_dish():
 	draggingFood = true
 
 
-func _on_user_pointer_set_order():
-	pass # Replace with function body.
+func _on_user_pointer_set_order(order):
+	if order == food:
+		print("U right")
+		$ConfirmSFX.play()
+	else:
+		print("U Wrong")
+		$DenySFX.play()
+	
+	cook_button.visible = true
+	food_sprite.texture = null
+	emit_signal("customer_left")
+
+
+func _on_user_pointer_reset_food_pos():
+	draggingFood = false
+	$CookPanel/Food.global_position.x = originFoodPos.x
+	$CookPanel/Food.global_position.y = originFoodPos.y - 4	

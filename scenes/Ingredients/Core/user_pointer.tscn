@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4dpkjyxgds0m"]
+[gd_scene load_steps=5 format=3 uid="uid://c4dpkjyxgds0m"]
 
 [ext_resource type="Script" path="res://scripts/user_pointer.gd" id="1_xyy20"]
 [ext_resource type="Texture2D" uid="uid://coo8a8vyny3hl" path="res://icon.svg" id="2_i4ibt"]
+[ext_resource type="AudioStream" uid="uid://cjyys3n5gyccd" path="res://assets/audio/cursor_style_2.wav" id="3_eky2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hn6xb"]
 radius = 4.0
@@ -20,3 +21,6 @@ visible = false
 z_index = 2
 scale = Vector2(0.046875, 0.046875)
 texture = ExtResource("2_i4ibt")
+
+[node name="ClickSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eky2o")
