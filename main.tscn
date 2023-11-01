@@ -44,3 +44,4 @@ text = "Demo Cooking
 "
 
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen" method="_on_button_pressed"]
+[connection signal="pressed" from="TitleScreen/Button2" to="TitleScreen" method="_on_button_2_pressed"]

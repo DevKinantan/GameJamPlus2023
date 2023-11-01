@@ -76,3 +76,8 @@ func _on_cooking_customer_left():
 		$TimerText.visible = false
 		$FinishSFX.play()
 		$Cooking.queue_free()
+
+
+func _on_button_pressed():
+	get_parent().get_node("TitleScreen").visible = true
+	queue_free()

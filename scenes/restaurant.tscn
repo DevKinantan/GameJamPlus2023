@@ -102,6 +102,12 @@ script = ExtResource("1_0rk40")
 [node name="Player" parent="." instance=ExtResource("2_8b0ld")]
 position = Vector2(229, 128)
 
+[node name="SeedsInven" parent="Player" index="13"]
+visible = false
+
+[node name="CanvasLayer" parent="Player" index="14"]
+visible = false
+
 [node name="Resto" type="Sprite2D" parent="."]
 position = Vector2(213, 120)
 texture = ExtResource("2_3hrrm")
@@ -317,7 +323,19 @@ vertical_alignment = 1
 [node name="FinishSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_joswn")
 
+[node name="Button" type="Button" parent="."]
+offset_left = 377.0
+offset_top = 6.0
+offset_right = 419.0
+offset_bottom = 37.0
+text = "Quit
+"
+
 [connection signal="customer_left" from="Cooking" to="." method="_on_cooking_customer_left"]
 [connection signal="game_started" from="Cooking" to="." method="_on_cooking_game_started"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="Player"]
+[editable path="Player/SeedsInven"]

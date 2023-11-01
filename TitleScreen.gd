@@ -11,8 +11,14 @@ func _process(delta):
 	pass
 	
 var farm = preload("res://scenes/farm.tscn")
+var masak = preload("res://scenes/restaurant.tscn")
 
 
 func _on_button_pressed():
 	get_parent().add_child(farm.instantiate())
+	visible = false
+
+
+func _on_button_2_pressed():
+	get_parent().add_child(masak.instantiate())
 	visible = false
